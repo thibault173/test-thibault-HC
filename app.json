@@ -1,7 +1,6 @@
 {
   "addons": [
-    "heroku-postgresql",
-    "sendgrid"
+    "heroku-postgresql"
   ],
   "buildpacks": [
     {
@@ -31,6 +30,9 @@
       "required": true
     },
     "SENDGRID_USERNAME": {
+      "required": true
+    },
+    "DOMAIN": {
       "required": true
     }
   },

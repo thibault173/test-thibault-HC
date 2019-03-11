@@ -66,13 +66,13 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Setup the mailer config
-  config.action_mailer.default_url_options = { host: 'http://test-thibault-hc-staging.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: "http://#{ENV['DOMAIN']}" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    domain: 'test-thibault-hc-staging.herokuapp.com',
+    domain: ENV['DOMAIN'],
     address: 'smtp.sendgrid.net',
     port: 587,
     authentication: :plain,

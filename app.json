@@ -1,6 +1,7 @@
 {
   "addons": [
-    "heroku-postgresql"
+    "heroku-postgresql",
+    "sendgrid"
   ],
   "buildpacks": [
     {
@@ -24,6 +25,15 @@
       "required": true
     },
     "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SENDGRID_PASSWORD": {
+      "required": true
+    },
+    "SENDGRID_USERNAME": {
+      "required": true
+    },
+    "DOMAIN": {
       "required": true
     }
   },

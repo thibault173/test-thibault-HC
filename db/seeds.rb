@@ -8,10 +8,11 @@ Workstation.destroy_all
 
 user = User.create( email: 'tv@test.fr',
                     password: 'azerty',
-                    password_confirmation: 'azerty',
                     name: 'Thibault',
                     phone_number: '07 01 01 01 01',
                     biography: 'Après 7 ans de supply chain, je me mets au code !')
+user.skip_confirmation!
+user.save!
 
 user_unconfirmed = User.create( email: 'uuc@test.fr',
                     password: 'azerty',
@@ -21,17 +22,19 @@ user_unconfirmed = User.create( email: 'uuc@test.fr',
 
 user_accepted = User.create( email: 'uacc@test.fr',
                     password: 'azerty',
-                    password_confirmation: 'azerty',
                     name: 'user accepted',
                     phone_number: '07 01 01 01 01',
                     biography: 'AAA...')
+user_accepted.skip_confirmation!
+user_accepted.save!
 
-user_expired = User.create( email: 'uex@test.fr',
+user_expired = User.create( email: 'uex@test3.fr',
                     password: 'azerty',
-                    password_confirmation: 'azerty',
                     name: 'user expired',
                     phone_number: '07 01 01 01 01',
                     biography: 'AAA...')
+user_expired.skip_confirmation!
+user_expired.save!
 
 puts "Creating #{User.all.size}/4 users"
 

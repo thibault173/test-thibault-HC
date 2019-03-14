@@ -1,0 +1,8 @@
+<h1>Workstations</h1>
+<% @workstations.each do |workstation| %>
+  <div class="card-workstation">
+    <%= link_to workstation_path(workstation.id), class: "btn btn-info" do %>
+      <%= "#{workstation.name}" %>
+    <% end %>
+  </div>
+<% end %>

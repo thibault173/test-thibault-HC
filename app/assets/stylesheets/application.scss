@@ -11,3 +11,16 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "shared/index";
+@import "workstations/index";
+
+body {
+  margin-top: 30px;
+}
+
+.container {
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px #D3D3D3;
+  padding: 10px;
+}

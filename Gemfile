@@ -17,6 +17,7 @@ gem 'webpacker'
 
 gem 'devise'
 gem 'awesome_print'
+gem 'factory_bot_rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

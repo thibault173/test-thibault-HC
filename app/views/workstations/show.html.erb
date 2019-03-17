@@ -2,8 +2,25 @@
 
 <h1><%= @workstation.name %></h1>
 
-<% @requests.each do |request| %>
-  <div class="card">
-    <%= "#{request.id} - #{request.user.name}" %>
+<h4>Waiting list - <%= @requests_confirmed.size %></h4>
+
+<% @requests_confirmed.each_with_index do |request, index| %>
+  <div class="card-user">
+    <div class="number"><%= "# #{index + 1}" %></div>
+    <div class="username <%= "current-user" if request.user == current_user %>">
+      <%= "#{request.user.name} (#{request.user.email})" %>
+    </div>
+    <div class="time"><%= "#{time_ago_in_words(request.user.confirmed_at)}" %></div>
+  </div>
+<% end %>
+
+<h4>People on the workspace - <%= @requests_accepted.size %></h4>
+
+<% @requests_accepted.each do |request| %>
+  <div class="card-user">
+    <div class="username <%= "current-user" if request.user == current_user %>">
+      <%= "#{request.user.name} (#{request.user.email})" %>
+    </div>
+    <div class="time"><%= "Signed #{request.user.confirmed_at.strftime('%d %b %Y')}" %></div>
   </div>
 <% end %>

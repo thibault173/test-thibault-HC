@@ -7,6 +7,7 @@ class WorkstationsController < ApplicationController
 
   def show
     @workstation = Workstation.find(params[:id])
-    @requests = @workstation.requests
+    @requests_confirmed = Request.confirmed.where(workstation: @workstation)
+    @requests_accepted = Request.accepted.where(workstation: @workstation)
   end
 end

@@ -10,7 +10,7 @@ $body-bg:                 $light-gray;
 $font-size-base: 1rem;
 
 // Colors
-$gray-base:       $gray;
+$gray-base:       $light-gray;
 $brand-primary:   $blue;
 $brand-success:   $green;
 $brand-info:      $yellow;
@@ -19,7 +19,9 @@ $brand-warning:   $orange;
 
 // Buttons & inputs' radius
 $border-radius-base:  2px;
-$border-radius-large: 2px;
-$border-radius-small: 2px;
+$border-radius-large: 4px;
+$border-radius-small: 1px;
 
 // Override other variables below!
+$gray: #A8A6A4;
+$blue: #2AA6A4;

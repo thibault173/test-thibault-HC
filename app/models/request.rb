@@ -10,7 +10,7 @@ class Request < ApplicationRecord
     includes(:user)
       .where.not(user: User.where(confirmed_at: nil))
       .where(status: "pending")
-      .order('users.confirmed_at')
+      .order('users.created_at')
   end)
 
   scope :accepted, -> { where(status: "accepted") }

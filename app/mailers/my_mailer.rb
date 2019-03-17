@@ -1,0 +1,8 @@
+class MyMailer < ApplicationMailer
+  def reconfirmation_instructions(resource, position)
+    @resource = resource
+    @token = @resource.confirmation_token
+    @position = position
+    mail(to: @resource.email, subject: 'Mail of reconfirmation')
+  end
+end

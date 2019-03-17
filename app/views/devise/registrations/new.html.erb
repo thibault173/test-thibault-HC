@@ -4,6 +4,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= simple_fields_for :others do |f| %>
+      <%= f.input :workstation,
+                  label:"For which workstation are you interested ?",
+                  collection: Workstation.all,
+                  label_method: :name,
+                  value_method: :id,
+                  required: true  %>
+    <% end %>
     <%= f.input :name,
                 required: true %>
     <%= f.input :email,

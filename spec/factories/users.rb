@@ -6,8 +6,10 @@ FactoryBot.define do
     phone_number { "06" }
     biography { "Je pense donc je suis." }
 
+    after(:build) { |u| u.skip_confirmation_notification! }
+
     trait :confirmed do
-      after(:build) { |u| u.skip_confirmation! }
+      after(:create) { |u| u.confirm }
     end
   end
 end

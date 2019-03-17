@@ -1,0 +1,31 @@
+.card-user {
+  padding: 10px;
+  border: 1px solid $gray-base;
+  border-radius: $border-radius-base;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px $light-gray;
+
+  .number {
+    color: $blue;
+    font-weight: bolder;
+  }
+
+  .username {
+    flex-grow: 1;
+    margin: 10px;
+  }
+
+  .current-user{
+    font-weight: bolder;
+  }
+
+  .time {
+    color: $gray;
+    font-style: italic;
+    font-size: 0.9em;
+  }
+}
+

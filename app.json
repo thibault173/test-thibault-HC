@@ -39,7 +39,7 @@
   },
   "formation": {
   },
-  "name": "test-thibault-HC",
+  "name": "test_thibault_hc",
   "scripts": {
     "postdeploy": "bundle exec rake db:schema:load db:seed"
   },

@@ -6,7 +6,12 @@ class Request < ApplicationRecord
 
   scope :unconfirmed, -> { where(user: User.where(confirmed_at: nil)) }
 
-  scope :confirmed, -> { includes(:user).where.not(user: User.where(confirmed_at: nil)).where(status: "pending").order('users.confirmed_at') }
+  scope(:confirmed, lambda do
+    includes(:user)
+      .where.not(user: User.where(confirmed_at: nil))
+      .where(status: "pending")
+      .order('users.confirmed_at')
+  end)
 
   scope :accepted, -> { where(status: "accepted") }
 

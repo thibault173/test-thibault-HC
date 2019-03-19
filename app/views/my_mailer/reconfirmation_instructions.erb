@@ -1,0 +1,7 @@
+<p>Hello <%= @resource.email %>!</p>
+
+<p>You made a request 3 months ago in our workstation : <%= @resource.request.workstation.name %></p>
+
+<p>You're now in the position # <%= @position %> in this waiting list.</p>
+
+<p><%= link_to 'Confirm I\'m still interested', confirmation_url(@resource, confirmation_token: @token) %></p>

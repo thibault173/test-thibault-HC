@@ -37,6 +37,18 @@ user_accepted = User.create( email: 'uacc@test.fr',
 user_accepted.skip_confirmation!
 user_accepted.save!
 
+user_to_be_expired = User.create( email: 'utbe@test.fr',
+                    password: 'azerty',
+                    name: 'Charles',
+                    phone_number: '07 01 01 01 01',
+                    biography: 'User to be expired')
+user_to_be_expired.skip_confirmation!
+user_to_be_expired.confirmed_at = Date.today - 100.day
+user_to_be_expired.confirmation_sent_at = Date.today - 100.day
+user_to_be_expired.created_at = Date.today - 100.day
+
+user_to_be_expired.save!
+
 user_expired = User.create( email: 'uex@test3.fr',
                     password: 'azerty',
                     name: 'user expired',
@@ -45,7 +57,7 @@ user_expired = User.create( email: 'uex@test3.fr',
 user_expired.skip_confirmation!
 user_expired.save!
 
-puts "Creating #{User.all.size}/5 users"
+puts "Creating #{User.all.size}/6 users"
 
 workstation1 = Workstation.create(name: 'Station F')
 workstation2 = Workstation.create(name: 'L\'anticafé')
@@ -58,6 +70,10 @@ request_unconfirmed = Request.create( workstation: workstation1,
 
 request_confirmed = Request.create( workstation: workstation1,
                                       user: user,
+                                      status: 'pending')
+
+request_confirmed = Request.create( workstation: workstation1,
+                                      user: user_to_be_expired,
                                       status: 'pending')
 
 Request.create( workstation: workstation1,
@@ -73,5 +89,5 @@ request_expired = Request.create( workstation: workstation1,
                                       user: user_expired,
                                       status: 'expired')
 
-puts "Creating #{Request.all.size}/5 requests"
+puts "Creating #{Request.all.size}/6 requests"
 

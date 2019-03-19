@@ -15,6 +15,15 @@ user = User.create( email: 'tv@test.fr',
 user.skip_confirmation!
 user.save!
 
+admin = User.create( email: 'admin@test.fr',
+                    password: 'azerty',
+                    name: 'Thibault',
+                    phone_number: '07 01 01 01 01',
+                    biography: 'C\'est moi l\'admin ahah !',
+                    admin: true)
+admin.skip_confirmation!
+admin.save!
+
 user_example = User.create( email: 'example@test.fr',
                     password: 'azerty',
                     name: 'Jean',

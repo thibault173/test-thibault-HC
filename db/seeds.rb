@@ -15,6 +15,15 @@ user = User.create( email: 'tv@test.fr',
 user.skip_confirmation!
 user.save!
 
+admin = User.create( email: 'admin@test.fr',
+                    password: 'azerty',
+                    name: 'Thibault',
+                    phone_number: '07 01 01 01 01',
+                    biography: 'C\'est moi l\'admin ahah !',
+                    admin: true)
+admin.skip_confirmation!
+admin.save!
+
 user_example = User.create( email: 'example@test.fr',
                     password: 'azerty',
                     name: 'Jean',
@@ -39,7 +48,7 @@ user_accepted.save!
 
 user_to_be_expired = User.create( email: 'utbe@test.fr',
                     password: 'azerty',
-                    name: 'Charles',
+                    name: 'Charly',
                     phone_number: '07 01 01 01 01',
                     biography: 'User to be expired')
 user_to_be_expired.skip_confirmation!
@@ -57,7 +66,7 @@ user_expired = User.create( email: 'uex@test3.fr',
 user_expired.skip_confirmation!
 user_expired.save!
 
-puts "Creating #{User.all.size}/6 users"
+puts "Creating #{User.all.size}/7 users"
 
 workstation1 = Workstation.create(name: 'Station F')
 workstation2 = Workstation.create(name: 'L\'anticafé')

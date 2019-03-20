@@ -9,4 +9,8 @@ class User < ApplicationRecord
   validates :biography, presence: true
 
   has_one :request
+
+  def admin?
+    admin
+  end
 end

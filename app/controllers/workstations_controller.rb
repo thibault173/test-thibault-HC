@@ -7,7 +7,23 @@ class WorkstationsController < ApplicationController
 
   def show
     @workstation = Workstation.find(params[:id])
-    @requests_confirmed = Request.confirmed.where(workstation: @workstation)
+    requests_confirmed
     @requests_accepted = Request.accepted.where(workstation: @workstation)
+  end
+
+  def accept_first
+    @workstation = Workstation.find(params[:workstation_id])
+
+    unless requests_confirmed.empty?
+      @requests_confirmed.first.accept!
+    end
+
+    redirect_to workstation_path(@workstation)
+  end
+
+  private
+
+  def requests_confirmed
+    @requests_confirmed = Request.confirmed.where(workstation: @workstation)
   end
 end

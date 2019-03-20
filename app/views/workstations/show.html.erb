@@ -4,17 +4,24 @@
 
 <h4>Waiting list - <%= @requests_confirmed.size %></h4>
 
+
 <% @requests_confirmed.each_with_index do |request, index| %>
   <div class="card-user">
     <div class="number"><%= "# #{index + 1}" %></div>
     <div class="username <%= "current-user" if request.user == current_user %>">
       <%= "#{request.user.name} (#{request.user.email})" %>
     </div>
-    <div class="time"><%= "#{time_ago_in_words(request.user.confirmed_at)}" %></div>
+    <div class="time"><%= "apply #{time_ago_in_words(request.user.confirmed_at)} ago" %></div>
+    <%= link_to "Accept", request_accept_path(request), class: "btn btn-outline-success little-size"  %>
   </div>
 <% end %>
 
-<h4>People on the workspace - <%= @requests_accepted.size %></h4>
+<hr>
+
+<div class="title">
+  <h4>People on the workspace - <%= @requests_accepted.size %></h4>
+  <% if current_user.admin? && !@requests_confirmed.empty? %><%= link_to "Accept first on waiting list", workstation_accept_path(@workstation) %> <% end %>
+</div>
 
 <% @requests_accepted.each do |request| %>
   <div class="card-user">

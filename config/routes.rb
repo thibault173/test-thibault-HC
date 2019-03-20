@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :workstations, only: [:index, :show]
+  resources :workstations, only: [:index, :show] do
+    get '/accept', to: 'workstations#accept_first'
+  end
+
+  resources :requests, only: [] do
+    get '/accept', to: 'requests#accept'
+  end
 end
 

@@ -5,4 +5,9 @@ class MyMailer < ApplicationMailer
     @position = position
     mail(to: @resource.email, subject: 'Mail of reconfirmation')
   end
+
+  def welcome(request)
+    @request = request
+    mail(to: @request.user.email, subject: 'Welcome !')
+  end
 end

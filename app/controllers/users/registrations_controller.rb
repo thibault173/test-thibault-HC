@@ -12,9 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @workstation_id = params[:others][:workstation]
-    super do |resource|
-      Request.create(user: resource, workstation_id: @workstation_id, status: "pending")
-    end
+    super
+    Request.create(user: resource, workstation_id: @workstation_id, status: "pending")
   end
 
   # GET /resource/edit

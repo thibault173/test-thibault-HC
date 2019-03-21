@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Users::RegistrationsController, type: :controller do
   describe "POST #create" do
-    let(:user) { build(:user) }
+    let!(:user) { create(:user) }
     let(:workstation) { Workstation.create(name: "workstation-test") }
 
     before :each do
@@ -22,9 +22,9 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    # it "create a request" do
-    #   subject
-    #   expect { subject }.to change { User.all.count }.by(1)
-    # end
+    it "create a request" do
+      expect(user.request).to eq(Request.last)
+      expect(user.request.workstation).to be_an_instance_of(Workstation)
+    end
   end
 end

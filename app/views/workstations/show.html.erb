@@ -12,7 +12,7 @@
       <%= "#{request.user.name} (#{request.user.email})" %>
     </div>
     <div class="time"><%= "apply #{time_ago_in_words(request.user.confirmed_at)} ago" %></div>
-    <%= link_to "Accept", request_accept_path(request), class: "btn btn-outline-success little-size"  %>
+    <% if current_user.admin? %><%= link_to "Accept", request_accept_path(request), class: "btn btn-outline-success little-size"  %> <% end %>
   </div>
 <% end %>
 
